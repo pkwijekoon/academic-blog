@@ -1,0 +1,1302 @@
+---
+title: Dengue incidence cases in Sri Lanka from 2010 to 2017
+author: Pushpakanthie Wijekoon
+date: '2018-11-06'
+categories:
+  - R
+tags:
+  - R Markdown
+slug: testing-a-new-post
+image:
+  caption: ''
+  focal_point: ''
+---
+
+Dengue is a mosquito-borne viral infection caused by four dengue virus serotypes, and  disease caused mainly by Aedes aegypti and Aedes albopictus mosquitos. The Dengue virus is transmitted to humans through the bites of infected female mosquitoes, and Infected humans are the main carriers. The relevant mosquitos are daytime feeders,with peak biting periods early in the morning and in the evening before dusk.  
+
+Dengue fever is endemic in Sri Lanka, and the Dengue incidence cases usually increases soon after the rainfall which is optimal for mosquito breeding.  The data for this study are obtained from the [Epidemiology Unit, Ministry of Health, Sri Lanka](http://www.epid.gov.lk/web/index.php?option=com_casesanddeaths&Itemid=448&lang=en).  
+
+
+
+```{r echo=FALSE}
+df=read.csv("dencolombo.csv")
+df=df[,1:4]
+
+```
+
+The following interactive plots present the Dengue incidence cases for each district in Sri Lanka from year 2010 to 2017.
+<br>
+
+```{r denguecol, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Colombo District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```
+
+<br>
+ 
+```{r denguekan, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denkandy.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Kandy District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+ 
+```{r denguegampaha, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("dengampaha.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Gampaha District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguegalle, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("dengalle.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Galle District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r dengueanupura, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denanupura.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Anuradhapura District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguebadulla, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denbadulla.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Badulla District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r dengueratnapura, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denratnapura.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Ratnapura District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r dengueampara, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denampara.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Ampara District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguebattica, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denbatticaloa.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Batticaloa District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguejaffna, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denjaffna.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Jaffna District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguekalmunai, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denkalmunai.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Kalmunai District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguekalutara, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denkalutara.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Kalutara District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguekegalle, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denkegalle.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Kegalle District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguekillinoch, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denkillinoch.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Killinochchi District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguekurunegala, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denkurunegala.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Kurunegala District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguemannar, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denmannar.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Mannar District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguematale, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denmatale.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Matale District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguematara, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denmatara.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Matara District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguemoneragala, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denmoneragala.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Maneragala District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguemulativu, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denmulativu.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Mulativu District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r dengueneliya, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denneliya.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Nuwaraeliya District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguepolonaru, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denpolonnaruwa.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Polonnaruwa District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r dengueputtalam, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denputtalam.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Puttalam District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguetrinco, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("dentrinco.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Trincomalee District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+<br>
+
+```{r denguevavuniya, echo=FALSE, message=FALSE, warning=FALSE}
+df=read.csv("denvavuniya.csv")
+df=df[,1:4]
+library(dplyr)
+library(plotly)
+month <- c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec")
+xform <- list(categoryorder = "array",
+              categoryarray = c("Jan", "Feb", "Mar", "Apr","May", "Jun", "Jul", "Aug","Sep", "Oct", "Nov", "Dec"))
+groupA <- df %>% filter(year == "2010")
+groupB <- df %>% filter(year == "2011")
+groupC <- df %>% filter(year == "2012")
+groupD <- df %>% filter(year == "2013")
+groupE <- df %>% filter(year == "2014")
+groupF <- df %>% filter(year == "2015")
+groupG <- df %>% filter(year == "2016")
+groupH <- df %>% filter(year == "2017")
+gBarChart <- data.frame(Month = names(table(groupA$month)),
+                        countA = groupA$count,
+                        countB = groupB$count,
+                        countC = groupC$count,
+                        countD = groupD$count,
+                        countE = groupE$count,
+                        countF = groupF$count,
+                        countG = groupG$count,
+                        countH = groupH$count)
+
+p3 <- plot_ly(gBarChart,
+              x = ~Month,
+              y = ~countA,
+              type = "bar",
+              name = "2010") %>% 
+  add_trace(y = ~countB,
+            name = "2011") %>% 
+  add_trace(y = ~countC,
+            name = "2012") %>% 
+  add_trace(y = ~countD,
+            name = "2013") %>% 
+  add_trace(y = ~countE,
+            name = "2014") %>% 
+  add_trace(y = ~countF,
+            name = "2015") %>% 
+  add_trace(y = ~countG,
+            name = "2016") %>% 
+  add_trace(y = ~countH,
+            name = "2017") %>% 
+  layout(title='Dengue incidence cases from year 2010 to 2017 in Vavuniya District', xaxis = xform, yaxis = list(title = "Dengue Count"),barmode = "group")
+p3
+```  
+
+
+
